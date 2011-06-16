@@ -3,8 +3,6 @@
 //  tstStage-0.1
 //
 //  Created by maliy on 12/03/08.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: restWrapper.m 1012 2009-10-28 15:22:11Z maliy $
 //
 
 #import "restWrapper.h"

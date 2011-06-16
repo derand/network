@@ -3,8 +3,6 @@
 //  tstStage-0.1
 //
 //  Created by maliy on 12/03/08.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: restWrapperDelegate.h 168 2009-02-03 20:35:29Z maliy $
 //
 
 #import <Foundation/Foundation.h> 

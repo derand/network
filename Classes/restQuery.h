@@ -3,8 +3,6 @@
 //  tstStage-0.1
 //
 //  Created by maliy on 1/26/09.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: restQuery.h 977 2009-09-28 14:24:42Z maliy $
 //
 
 #import <UIKit/UIKit.h>

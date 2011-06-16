@@ -3,8 +3,6 @@
 //  src
 //
 //  Created by maliy on 2/9/09.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: transportQuery.m 494 2009-04-23 15:57:50Z maliy $
 //
 
 #import "transportQuery.h"
@@ -19,7 +17,8 @@
 
 - (id) initWithQuery:(restQuery *) _query responder:(id) target function:(SEL) sel info:(id) _info
 {
-	if (self = [super init])
+    self = [super init];
+	if (self)
 	{
 		query = _query;
 		if (query == nil)

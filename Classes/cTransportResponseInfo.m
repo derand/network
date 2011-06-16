@@ -3,8 +3,6 @@
 //  src
 //
 //  Created by maliy on 4/21/09.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: cTransportResponseInfo.m 494 2009-04-23 15:57:50Z maliy $
 //
 
 #import "cTransportResponseInfo.h"

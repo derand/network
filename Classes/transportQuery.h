@@ -3,8 +3,6 @@
 //  src
 //
 //  Created by maliy on 2/9/09.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: transportQuery.h 747 2009-07-07 09:17:53Z maliy $
 //
 
 #import <UIKit/UIKit.h>

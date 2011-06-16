@@ -3,8 +3,6 @@
 //  tstStage-0.1
 //
 //  Created by maliy on 1/26/09.
-//  Copyright 2009 off-club. All rights reserved.
-//  $Id: restQuery.m 984 2009-10-01 09:55:02Z maliy $
 //
 
 #import "restQuery.h"

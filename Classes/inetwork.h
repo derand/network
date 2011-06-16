@@ -3,7 +3,6 @@
  *  src
  *
  *  Created by maliy on 12/26/09.
- *  Copyright 2009 interMobile. All rights reserved.
  *
  */
 
