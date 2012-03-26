@@ -48,7 +48,7 @@
 	}
 }
 
-- (void) callResponderWithData:(id) data error:(cError *) err
+- (void) callResponderWithData:(id) data error:(NSError *) err
 {
 	if (responder != nil)
 	{

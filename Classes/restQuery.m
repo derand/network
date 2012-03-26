@@ -20,6 +20,8 @@
 @synthesize params;
 @synthesize obj;
 @synthesize error;
+@synthesize startImmediately;
+@synthesize queryStatus;
 
 #pragma mark LifeCycle
 
@@ -44,6 +46,8 @@
 		engine = [[restWrapper alloc] init];
         engine.delegate = self;
 
+        startImmediately = YES;
+        queryStatus = QueryStatusNone;
 	}
 	return self;
 }
@@ -74,7 +78,15 @@
 	verb = [iverb retain];
 	params = [iparams retain]; 
 	
-	[engine sendRequestTo:address usingVerb:verb withParameters:params];
+    if (startImmediately)
+    {
+		queryStatus = QueryStatusStarted;
+		[engine sendRequestTo:address usingVerb:verb withParameters:params];
+    }
+	else
+	{
+		qtype = 1;
+	}
 }
 
 
@@ -92,10 +104,22 @@
         engine = [[restWrapper alloc] init];
         engine.delegate = self;
     }
-	address = [iaddress retain];;
+	address = [iaddress retain];
 	params = [iparams retain]; 
 	
-	[engine uploadData:idata named:filename toURL:iaddress withParameters:iparams];
+    if (startImmediately)
+    {
+		queryStatus = QueryStatusStarted;
+		[engine uploadData:idata named:filename toURL:address withParameters:params];
+	}
+	else
+	{
+		qtype = 2;
+		[storedData release];
+		storedData = [idata retain];
+		[storefFileName release];
+		storefFileName = [filename retain]; 
+	}
 }
 
 - (void) uploadData:(NSURL *)iaddress data:(NSArray *)idata contentTypes:(NSArray *) contentTypes
@@ -115,15 +139,69 @@
 	address = [iaddress retain];;
 	params = [iparams retain]; 
 	
-	[engine uploadDataArray:idata
-			   contentTypes:contentTypes 
-				  fileNames:filenames
-					  toURL:iaddress withParameters:iparams];
+    if (startImmediately)
+    {
+		queryStatus = QueryStatusStarted;
+		[engine uploadDataArray:idata
+				   contentTypes:contentTypes 
+					  fileNames:filenames
+						  toURL:address
+				 withParameters:params];
+	}
+	else
+	{
+		qtype = 3;
+		[storedDataArray release];
+		storedDataArray = [idata retain];
+		[storedContentTypes release];
+		storedContentTypes = [contentTypes retain]; 
+		[storedFileNames release];
+		storedFileNames = [storedFileNames retain]; 
+	}
 }
 
+- (void) startConnection
+{
+	if (!startImmediately)
+	{
+		switch (qtype)
+		{
+			case 1:
+				queryStatus = QueryStatusStarted;
+				[engine sendRequestTo:address usingVerb:verb withParameters:params];
+				break;
+			case 2:
+				queryStatus = QueryStatusStarted;
+				[engine uploadData:storedData named:storefFileName toURL:address withParameters:params];
+				break;
+			case 3:
+				queryStatus = QueryStatusStarted;
+				[engine uploadDataArray:storedDataArray
+						   contentTypes:storedContentTypes 
+							  fileNames:storedFileNames
+								  toURL:address
+						 withParameters:params];
+				break;
+				
+			default:
+				break;
+		}
+	}
+}
+
+- (void)cancelConnection
+{
+	[engine cancelConnection];
+}
 
 - (void) dealloc
 {
+	[storedDataArray release];
+	[storedContentTypes release];
+	[storedFileNames release];
+	[storedData release];
+	[storefFileName release];
+
 	[error release];
 	[address release];
 	[params release];
@@ -131,11 +209,6 @@
 	[engine release];
 	self.obj = nil;
 	[super dealloc];
-}
-
-- (void)cancelConnection
-{
-	[engine cancelConnection];
 }
 
 - (void) useCookies:(BOOL) _sc

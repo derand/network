@@ -67,6 +67,7 @@
 			);
 			name = network;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -194,6 +195,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = network;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -210,6 +212,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = network;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -235,6 +238,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos3.0;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

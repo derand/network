@@ -23,6 +23,6 @@
 
 - (id) initWithQuery:(restQuery *) _query responder:(id) target function:(SEL) sel info:(id) _info;
 - (void) callResponder:(id) data;
-- (void) callResponderWithData:(id) data error:(cError *) err; 
+- (void) callResponderWithData:(id) data error:(NSError *) err; 
 
 @end
