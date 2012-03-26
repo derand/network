@@ -306,9 +306,9 @@
     NSInteger count = [challenge previousFailureCount];
     if (count == 0)
     {
-        NSURLCredential* credential = [[NSURLCredential credentialWithUser:username
-                                                                  password:password
-                                                               persistence:NSURLCredentialPersistenceNone] autorelease];
+        NSURLCredential* credential = [NSURLCredential credentialWithUser:username
+                                                                 password:password
+                                                              persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:credential 
                forAuthenticationChallenge:challenge];
     }
