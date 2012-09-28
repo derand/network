@@ -55,6 +55,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL startImmediately;
 @property (nonatomic, readonly) eQueryStatus queryStatus;
 
++ (NSInteger) checkURL:(NSURL *)url;
+
 - (id) init;
 - (id) initWithQuery:(NSURL *)address usingVerb:(NSString *)verb parametrs:(NSDictionary *)params mimneType:(NSString *)mimeType object:(id)obj responseSel:(SEL) response;
 - (void) queryToAddress:(NSURL *)iaddress usingVerb:(NSString *)iverb parametrs:(NSDictionary *)iparams mimneType:(NSString *)imimeType object:(id)iobj responseSel:(SEL) response;
@@ -67,5 +69,6 @@ typedef enum {
 
 - (void) useCookies:(BOOL) _sc;
 - (void) reciveDataTarget:(id) target selector:(SEL) aSelector;
+
 
 @end

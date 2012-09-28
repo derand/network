@@ -232,6 +232,28 @@
     return engine.fileName;
 }
 
++ (NSInteger) checkURL:(NSURL *)url
+{
+	NSMutableURLRequest *request = [[NSURLRequest requestWithURL:url] mutableCopy];
+	[request setHTTPMethod:@"HEAD"];
+	[request autorelease];
+	NSURLResponse *response = nil;
+	NSError *r_error = nil;
+	[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&r_error];
+//	NSData *data=[[NSData alloc] initWithData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]];
+	
+	NSInteger httpStatus = [((NSHTTPURLResponse *)response) statusCode];
+	
+	return httpStatus;
+/*
+	if(httpStatus == 404)
+	{
+		NSLog(@"%@ NOT FOUND!", [productDic objectForKey:@"fileName"]);
+		
+	}
+*/
+}
+
 
 #pragma mark -
 #pragma mark restWrapperDelegate

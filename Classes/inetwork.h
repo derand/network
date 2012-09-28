@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, assign) NSString *outputFile;
 
++ (NSInteger) checkURL:(NSURL *)url;
 
 - (id) init;
 - (id) initWithQuery:(NSURL *)address usingVerb:(NSString *)verb parametrs:(NSDictionary *)params mimneType:(NSString *)mimeType object:(id)obj responseSel:(SEL) response;
